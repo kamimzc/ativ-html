@@ -5,21 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Sorteio Lotomania</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
 </head> 
 <body> 
 
-    <div class="navbar">
+    <div class="container">
         <img src="imagens/loto.png" alt="loto">
+        <div class="container">
+            <h1>Sorteio Lotomania</h1>
+            <form id="sorteioForm">
+              <label for="quantidadeNumeros">Quantidade de Números por Jogo:</label>
+              <input type="number" id="quantidadeNumeros" min="1" max="100" required>
+        
+              <label for="quantidadeJogos">Quantidade de Jogos:</label>
+              <input type="number" id="quantidadeJogos" min="1" max="50" required>
+        
+              <button type="submit">Sortear</button>
+            </form>
+        
+                <div id="resultado"></div> <!--aqui estou inserindo os jogos contidos no javascript-->
     </div>
-
-    <h1>Bem-vindo ao sorteio Lotomania!</h1> 
-    <br> 
-    <h2>🎯 Como jogar?</h2> 
-    <h3> Você escolhe 50 números dentre os 100 disponíveis na tabela abaixo (numerados de 00 a 99).</h3> 
-
-    <div class="lotomania"></div>
-    <button onclick="adicionarJogo()">Adicionar Jogo</button>
-    <button onclick="sortear()">Sortear</button>
+    <script src="script.js"></script>
 </body> 
 </html> 

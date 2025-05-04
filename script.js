@@ -1,69 +1,58 @@
-let jogos = [];
-let numerosSorteados = new Set();
+// script.js
+document.getElementById('sorteioForm').addEventListener('submit', function(e) {
+  e.preventDefault();//seleciona o formulário, adiciona para ler o formulário e evita que a pagina recarregua assim que é prenchida
 
-// Gera e exibe os 100 números (de 00 a 99, embaralhados)
-function gerarNumeros() {
-  const container = document.getElementById("numeros");
-  container.innerHTML = "";
-  const numeros = Array.from({ length: 100 }, (_, i) => i);
-  numeros.sort(() => Math.random() - 0.5); // embaralha
+  const qtdNumeros = parseInt(document.getElementById('quantidadeNumeros').value);//const variável constante, nome da varável 
+  const qtdJogos = parseInt(document.getElementById('quantidadeJogos').value);
+  const resultadoDiv = document.getElementById('resultado');
+  //esse codigo cria variáveis constantes e pega o valor delas em string e as passa para numeros inteiros e printa na tela 
+  //"quantidadeNumeros" e o valor atual da variável
 
-  numeros.forEach(num => {
-    const span = document.createElement("span");
-    span.classList.add("numero");
-    span.textContent = num.toString().padStart(2, '0');
-    span.onclick = () => selecionarNumero(span);
-    container.appendChild(span);
-  });
-}
-
-// Seleciona até 50 números
-function selecionarNumero(elemento) {
-  if (elemento.classList.contains("selecionado")) {
-    elemento.classList.remove("selecionado");
-  } else {
-    const selecionados = document.querySelectorAll(".numero.selecionado");
-    if (selecionados.length < 50) {
-      elemento.classList.add("selecionado");
-    } else {
-      alert("Você já selecionou 50 números!");
-    }
-  }
-}
-
-// Adiciona os 50 números selecionados como um jogo
-function adicionarJogo() {
-  const selecionados = [...document.querySelectorAll(".numero.selecionado")];
-  if (selecionados.length !== 50) {
-    alert("Você deve selecionar 50 números.");
+  if (qtdNumeros > 100 || qtdNumeros < 1) {
+    alert("Escolha entre 1 e 100 números.");
     return;
   }
+  //se qtdNumetos for maior que 100 e qtdNumeros for menor que 1 então ele emitirá um alerta interropendo a tela com return
 
-  const jogo = selecionados.map(el => el.textContent);
-  jogos.push(jogo);
+  resultadoDiv.innerHTML = "";//zera os jogos anteriores
 
-  alert(`Jogo ${jogos.length} salvo com sucesso!`);
-  gerarNumeros(); // reinicia a tabela para novo jogo
-}
+  for (let j = 0; j < qtdJogos; j++) {//for executa de 0 até a quantidade de jogos estimada pelo usuário
+    const jogo = gerarNumerosAleatorios(qtdNumeros);//cria uma variavel constante gerando um array com numeros sorteados
+    const titulo = `<h3>Jogo ${j + 1}</h3>`;//usado para printar qual jogo está sendo executado
+    const tabela = gerarTabelaComDestacados(jogo);//cria uma tabela com os numeros sorteados
+    resultadoDiv.innerHTML += titulo + tabela;//altera o print de qual jogo está sendo executado
+  }
+});
 
-// Sorteia 20 números de 00 a 99 e destaca nos jogos
-function sortear() {
-  numerosSorteados = new Set();
-  while (numerosSorteados.size < 20) {
-    numerosSorteados.add(Math.floor(Math.random() * 100).toString().padStart(2, '0'));
+function gerarNumerosAleatorios(quantidade) {//cria uma função de gerarNumerosAleatorios e a nomeia como quantidade
+  const numeros = [];//cria uma variavel constante chamada numeros
+
+  while (numeros.length < quantidade) {//cria um loop de repetição que funcionará enquanto a quantidade de numeros do array
+    //for menor que o nuemro da variavel
+    const numero = Math.floor(Math.random() * 100);//cria uma variavel numero e dentro dela com o Math.random gera numeros aleatórios
+    //e faz * 100 onde gerará numeros de 00 até 99 e o Math.floor é utilizado para arredondar esse numero dividido
+
+    const formatado = numero.toString().padStart(2, '0');//cria uma variavel chamada formatado, torna o valor da variavel 
+    //numero para string e depois adiciona o numero 0 antes da string, garantindo que todos os numeros tenham 2 digitos
+
+    if (!numeros.includes(formatado)) {//verifica se o numero formatado ja existe no array numeros
+      numeros.push(formatado);//se sim, ele adiciona o numero  formatado ao array
+    }
   }
 
-  const resultadoDiv = document.getElementById("resultado");
-  resultadoDiv.textContent = [...numerosSorteados].sort().join(", ");
-
-  // Marcar os números sorteados nos jogos
-  const numeros = document.querySelectorAll(".numero");
-  numeros.forEach(el => {
-    const num = el.textContent;
-    if (numerosSorteados.has(num)) {
-      el.classList.add("sorteado");
-    }
-  });
+  return numeros.sort();//retorna o resultado do loop e coloca em ordem crescente
 }
 
-gerarNumeros(); // inicial
+function gerarTabelaComDestacados(sorteados) {//gera uma tabela com nome "sorteados"
+  let html = '<div class="tabela-numeros">';//le um codigo em html puxando a formatação do css
+
+  for (let i = 0; i < 100; i++) {//gera os numeros de 0 á 99
+    const num = i.toString().padStart(2, '0');//cria uma variavel constante que transforma o i em uma string e garante que se 
+    //o numero for menor que 10 deve inserir o 0
+    const classe = sorteados.includes(num) ? 'numero sorteado' : 'numero';//verifica se o num foi sorteado dentro do array
+    html += `<div class="${classe}">${num}</div>`;
+  }
+
+  html += '</div>';
+  return html;
+}
