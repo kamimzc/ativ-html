@@ -4,17 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sorteio da Quina</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="/CSS/style.css">
+    <script src="/JS/script.js"></script>
 </head>
 <body>
-    <div class="navbar">
-        <img src="imagens/quina.png" alt="mega">
-    </div>
-
-    <h1>Bem-vindo ao sorteio da Quina!</h1> 
-    <br> 
-    <h2>🎯 Como jogar?</h2> 
-    <h3>Você escolhe de 5 a 15 números entre os 80 disponíveis na tabela abaixo(numerados de 01 a 80). </h3> 
+    <div class="container">
+        <h1>Sorteio Quina</h1>
+        <form id="sorteioForm">
+          <label for="quantidadeNumeros">Quantidade de Números por Jogo:</label>
+          <input type="number" id="quantidadeNumeros" min="1" max="100" required>
+    
+          <label for="quantidadeJogos">Quantidade de Jogos:</label>
+          <input type="number" id="quantidadeJogos" min="1" max="50" required>
+    
+          <button type="submit">Sortear</button>
+        </form>
+    
+            <div id="resultado"></div> <!--aqui estou inserindo os jogos contidos no javascript-->
+</div>
 </body>
 </html>

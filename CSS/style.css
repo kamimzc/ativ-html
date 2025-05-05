@@ -4,6 +4,16 @@ body {
   background-color: #f4f4f4;/*define a cor de fundo da pagina*/
   padding: 20px;/*da espaço em todo campo da página*/
 }
+.header-loto {
+  width: 100%;
+  background-image:url(/HTML/imagens/loto.png);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}
 .container {/*classe geralmente usada para centralizar e formatar o bloco principal*/ 
   max-width: 700px;/*define a largura do conteudo*/
   margin: auto;/* centraliza na tela*/
