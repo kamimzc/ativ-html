@@ -6,7 +6,6 @@ body {
 }
 .header-loto {
   width: 100%;
-  background-image:url(/HTML/imagens/loto.png);
   color: white;
   text-align: center;
   padding: 20px;
@@ -59,7 +58,7 @@ button {
   border-radius: 5px;/*deixa os quadrados arredondados*/
 }
 .sorteado {/*mostra os numeros sorteados*/
-  background-color: #FF4500;
+  background-color: #0000ff;
   color: white;
   font-weight: bold;/*deixar o texto em negrito*/
 }

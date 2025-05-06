@@ -6,7 +6,7 @@ document.getElementById('sorteioForm').addEventListener('submit', function(e) {
   const qtdJogos = parseInt(document.getElementById('quantidadeJogos').value);
   const resultadoDiv = document.getElementById('resultado');
   //esse codigo cria variáveis constantes e pega o valor delas em string e as passa para numeros inteiros e printa na tela 
-  //"quantidadeNumeros" e o valor atual da variável
+  //"quantidadeNumeros" é o valor atual da variável
 
   if (qtdNumeros > 100 || qtdNumeros < 1) {
     alert("Escolha entre 1 e 100 números.");

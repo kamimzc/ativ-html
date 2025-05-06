@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sorteio da Quina</title>
     <link rel="stylesheet" href="/CSS/style.css">
-    <script src="/JS/script.js"></script>
+
 </head>
 <body>
     <div class="container">
         <h1>Sorteio Quina</h1>
-        <form id="sorteioForm">
+        <br><br>
+        <h2>Você deve acertar de 2 à 5 números dentre 15 números máximos que você pode jogar<h2>          <form id="sorteioForm">
           <label for="quantidadeNumeros">Quantidade de Números por Jogo:</label>
-          <input type="number" id="quantidadeNumeros" min="1" max="100" required>
+          <input type="number" id="quantidadeNumeros" min="1" max="15" required>
     
           <label for="quantidadeJogos">Quantidade de Jogos:</label>
           <input type="number" id="quantidadeJogos" min="1" max="50" required>
@@ -22,5 +23,6 @@
     
             <div id="resultado"></div> <!--aqui estou inserindo os jogos contidos no javascript-->
 </div>
+<script src="/JS/scriptquina.js"></script>
 </body>
 </html>

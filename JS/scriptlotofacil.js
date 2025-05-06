@@ -1,18 +1,16 @@
 // script.js
 document.getElementById('sorteioForm').addEventListener('submit', function(e) {
-    e.preventDefault();//seleciona o formulário, adiciona para ler o formulário e evita que a pagina recarregua assim que é prenchida
+    e.preventDefault();
   
-    const qtdNumeros = parseInt(document.getElementById('quantidadeNumeros').value);//const variável constante, nome da varável 
+    const qtdNumeros = parseInt(document.getElementById('quantidadeNumeros').value);
+
     const qtdJogos = parseInt(document.getElementById('quantidadeJogos').value);
     const resultadoDiv = document.getElementById('resultado');
-    //esse codigo cria variáveis constantes e pega o valor delas em string e as passa para numeros inteiros e printa na tela 
-    //"quantidadeNumeros" e o valor atual da variável
   
     if (qtdNumeros > 25 || qtdNumeros < 1) {
-      alert("Escolha 15 e 20 números.");
+      alert("Escolha 15 à 20 números dentre os 25 números disponíveis.");
       return;
     }
-    //se qtdNumetos for maior que 100 e qtdNumeros for menor que 1 então ele emitirá um alerta interropendo a tela com return
   
     resultadoDiv.innerHTML = "";//zera os jogos anteriores
   
@@ -27,10 +25,10 @@ document.getElementById('sorteioForm').addEventListener('submit', function(e) {
   function gerarNumerosAleatorios(quantidade) {//cria uma função de gerarNumerosAleatorios e a nomeia como quantidade
     const numeros = [];//cria uma variavel constante chamada numeros
   
-    while (numeros.length < quantidade) {//cria um loop de repetição que funcionará enquanto a quantidade de numeros do array
+    while (numeros.length < quantidade) {//cria um loop de repetição que funcionará de acordo com a quantidade de numeros do array
       //for menor que o nuemro da variavel
       const numero = Math.floor(Math.random() * 25);//cria uma variavel numero e dentro dela com o Math.random gera numeros aleatórios
-      //e faz * 100 onde gerará numeros de 00 até 99 e o Math.floor é utilizado para arredondar esse numero dividido
+      //e faz * 100 onde gerará numeros de 00 até 25 e o Math.floor é utilizado para arredondar esse numero dividido
   
       const formatado = numero.toString().padStart(2, '0');//cria uma variavel chamada formatado, torna o valor da variavel 
       //numero para string e depois adiciona o numero 0 antes da string, garantindo que todos os numeros tenham 2 digitos
@@ -46,11 +44,11 @@ document.getElementById('sorteioForm').addEventListener('submit', function(e) {
   function gerarTabelaComDestacados(sorteados) {//gera uma tabela com nome "sorteados"
     let html = '<div class="tabela-numeros">';//le um codigo em html puxando a formatação do css
   
-    for (let i = 0; i < 20; i++) {//gera os numeros de 0 á 20
+    for (let i = 0; i < 25; i++) {//gera os numeros de 0 á 25
       const num = i.toString().padStart(2, '0');//cria uma variavel constante que transforma o i em uma string e garante que se 
       //o numero for menor que 10 deve inserir o 0
       const classe = sorteados.includes(num) ? 'numero sorteado' : 'numero';//verifica se o num foi sorteado dentro do array
-      html += `<div class="${classe}">${num}</div>`;
+      html += `<div class="${classe}">${num}</div>`;//cor diferente para números sorteados
     }
   
     html += '</div>';
