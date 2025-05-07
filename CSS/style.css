@@ -28,7 +28,6 @@ form label {/*pega informações do formulário*/
 input {/*pega todos os dados*/
   width: 100%;/*ocupa a largura disponível*/
   padding: 8px;/*da um espaço interno para o texto não colar nas bordas*/
-  margin-top: 5px;/*espaço entre o input(dados) e o form*/  
 }
 button {
   margin-top: 15px;
@@ -52,13 +51,11 @@ button {
 }
 .numero {/*preenche cada numero da tabela*/
   width: 100%;
-  padding: 10px 0;
   text-align: center;/*deixa o numero centralizado*/  
   background-color: #e0e0e0;
-  border-radius: 5px;/*deixa os quadrados arredondados*/
 }
 .sorteado {/*mostra os numeros sorteados*/
-  background-color: #0000ff;
+  background-color: #28a745;
   color: white;
   font-weight: bold;/*deixar o texto em negrito*/
 }
